@@ -15,7 +15,6 @@ export const Header: React.FC<Props> = ({
 }) => {
   return (
     <header className="todoapp__header">
-      {/* проверка, есть ли задачи, чтобы отобразить кнопку 'Toggle All' */}
       {todos.length > 0 && (
         <button
           type="button"
@@ -24,7 +23,6 @@ export const Header: React.FC<Props> = ({
         />
       )}
 
-      {/* Add a todo on form submit */}
       <form>
         <input
           data-cy="NewTodoField"

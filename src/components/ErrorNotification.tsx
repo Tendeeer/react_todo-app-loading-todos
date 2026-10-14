@@ -20,7 +20,6 @@ export const ErrorNotification: React.FC<Props> = ({ error, onClick }) => {
         className="delete"
         onClick={onClick}
       />
-      {/* уведомление об ошибке при загрузке задач */}
       {error}
     </div>
   );

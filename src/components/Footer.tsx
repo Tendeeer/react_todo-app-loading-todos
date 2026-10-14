@@ -2,6 +2,12 @@ import React from 'react';
 import { FilterStatus } from '../types/Filter';
 import cn from 'classnames';
 
+const filters = [
+  { status: FilterStatus.All, title: 'All', href: '#/' },
+  { status: FilterStatus.Active, title: 'Active', href: '#/active' },
+  { status: FilterStatus.Completed, title: 'Completed', href: '#/completed' },
+];
+
 export interface Props {
   filter: FilterStatus;
   todoCount: number;
@@ -22,38 +28,19 @@ export const Footer: React.FC<Props> = ({
       </span>
 
       <nav className="filter" data-cy="Filter">
-        <a
-          href="#/"
-          className={cn('filter__link', {
-            selected: filter === FilterStatus.All,
-          })}
-          data-cy="FilterLinkAll"
-          onClick={() => onFilterChange(FilterStatus.All)}
-        >
-          All
-        </a>
-
-        <a
-          href="#/active"
-          className={cn('filter__link', {
-            selected: filter === FilterStatus.Active,
-          })}
-          data-cy="FilterLinkActive"
-          onClick={() => onFilterChange(FilterStatus.Active)}
-        >
-          Active
-        </a>
-
-        <a
-          href="#/completed"
-          className={cn('filter__link', {
-            selected: filter === FilterStatus.Completed,
-          })}
-          data-cy="FilterLinkCompleted"
-          onClick={() => onFilterChange(FilterStatus.Completed)}
-        >
-          Completed
-        </a>
+        {filters.map(({ status, title, href }) => (
+          <a
+            key={status}
+            href={href}
+            className={cn('filter__link', {
+              selected: filter === status,
+            })}
+            data-cy={'FilterLink${title}'}
+            onClick={() => onFilterChange(status)}
+          >
+            {title}
+          </a>
+        ))}
       </nav>
 
       <button

@@ -84,10 +84,8 @@ export const App: React.FC = () => {
           inputRef={inputRef}
         />
 
-        {/*  скрытие списка задач, если их нет */}
         {todos.length > 0 && <TodoList todos={visibleTodos} />}
 
-        {/* скрытие футера, если задач 0 */}
         {todos.length > 0 && (
           <Footer
             filter={filter}
